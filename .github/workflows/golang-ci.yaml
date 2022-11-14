@@ -1,0 +1,28 @@
+---
+on:
+  workflow_call:
+    inputs:
+      go-version:
+        required: true
+        type: string
+        description: 'Go version to bootstrap'
+        default: 1.18
+
+name: Continuous Integration
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-go@v3
+      with:
+        go-version: ${{ inputs.go_version }}
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Run unit tests
+      run: go test ./...
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        platforms: linux/amd64
+        push: false
