@@ -34,4 +34,4 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: |
-          356933967075.dkr.ecr.us-east-1.amazonaws.com/geekshubs-demo-02:${{ env.GITHUB_SHA }}
+          356933967075.dkr.ecr.us-east-1.amazonaws.com/geekshubs-demo-02:${{ github.sha }}
