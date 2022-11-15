@@ -11,6 +11,9 @@ name: Continuous Integration
 jobs:
   unit-test:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - uses: actions/setup-go@v3
       with:
