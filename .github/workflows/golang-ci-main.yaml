@@ -27,6 +27,9 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::356933967075:role/GithubPipelineDemo
         aws-region: us-east-1
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
